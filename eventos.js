@@ -16,17 +16,22 @@ cuadro.addEventListener("mousedown", empezarDibujo);
 cuadro.addEventListener("mouseup", terminarDibujo);
 
 
-function empezarDibujo(){
+let xm = 0;
+let ym = 0;
+function empezarDibujo(evento){
+  xm = evento.layerX;
+  ym = evento.layerY;
   cuadro.addEventListener("mousemove", dibujarMouse);
 }
 
-function terminarDibujo(){
+function terminarDibujo(evento){
   cuadro.removeEventListener("mousemove", dibujarMouse);
 }
 
 function dibujarMouse(evento){
-  console.log(evento);
-  dibujarLinea("red", evento.layerX, evento.layerY, evento.layerX +2, evento.layerY +2, papel);
+  dibujarLinea("red", xm, ym, evento.layerX , evento.layerY, papel);
+  xm = evento.layerX;
+  ym = evento.layerY;
 }
 
 dibujarLinea("red", x-1, y-1, x+1, y+1, papel);
