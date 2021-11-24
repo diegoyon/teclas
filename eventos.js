@@ -5,26 +5,23 @@ let teclas = {
   RIGHT: 39
 };
 
-
-
 document.addEventListener("keyup", dibujarTeclado);
+let cuadro = document.getElementById("area_de_dibujo");
+let papel = cuadro.getContext("2d");
+
+dibujarLinea("red", 100, 100, 200,200, papel);
+
+function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo){
+  lienzo.beginPath();
+  lienzo.strokeStyle = color;
+  lienzo.moveTo(xinicial, yinicial);
+  lienzo.lineTo(xfinal, yfinal);
+  lienzo.stroke();
+  lienzo.closePath();
+}
 
 function dibujarTeclado(evento){
-/*   if(evento.keyCode == teclas.UP){
-    console.log('arriba')
-  }
 
-  if(evento.keyCode == teclas.DOWN){
-    console.log('abajo')
-  }
-
-  if(evento.keyCode == teclas.RIGHT){
-    console.log('derecha')
-  }
-
-  if(evento.keyCode == teclas.LEFT){
-    console.log('izquierda')
-  } */
 
   switch(evento.keyCode){
     case teclas.UP:
